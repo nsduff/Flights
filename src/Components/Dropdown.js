@@ -1,21 +1,36 @@
-function Dropdown({ origin, destination, setOrigin, setDestination }) {
-  const destinations = ["VLC", "BCN", "MAD", "MXP", "ATH", "ASS"];
-  const origins = ["PRG", "BER", "WAW", "PED"];
+function Dropdown({ setOrigin, setDestination }) {
+  const destinations =
+    [
+      { name: "Valencia", code: "VLC" },
+      { name: "Madrid", code: "MAD" },
+      { name: "Milan", code: "MXP" },
+      { name: "Athens", code: "ATH" },
+      { name: "Bollocks", code: "ASS" },
+    ]
+    ;
+  const origins =
+    [
+      { name: "Prague", code: "PRG" },
+      { name: "Berlin", code: "BER" },
+      { name: "Warsaw", code: "WAW" },
+      { name: "Pardubice", code: "PED" },
+    ]
+
   return (
     <div>
-      <label for="origin">Origin</label>
+      <label htmlFor="origin">Origin</label>
       <select name="origin" onChange={(e) => setOrigin(e.target.value)}>
         {origins.map((o, i) => (
-          <option key={i}>{o}</option>
+          <option key={i} value={o.code}>{o.name}</option>
         ))}
       </select>
-      <label for="destination">Destination</label>
+      <label htmlFor="destination">Destination</label>
       <select
         name="destination"
         onChange={(e) => setDestination(e.target.value)}
       >
         {destinations.map((d, i) => (
-          <option key={i}>{d}</option>
+          <option key={i} value={d.code}>{d.name}</option>
         ))}
       </select>
       <br />

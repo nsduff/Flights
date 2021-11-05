@@ -1,26 +1,26 @@
-function FlightResults({ data, convertTime }) {
-  if (!data.length) {
-    return <h2>SCREW YOU, NO FLIGHTS</h2>;
+import ResultCard from "./ResultCard";
+import { Spinner } from 'reactstrap';
+
+function FlightResults({ startSearch, result, data, convertTime, destination, direct }) {
+
+  if (
+    startSearch &&
+    !result) {
+    return <Spinner></Spinner>;
   }
+  else if (!data.length) {
+
+    return (destination === 'ASS' && direct === 1) ? <h2>TO DEEZ BOLLOCKS?</h2>
+      : <h2>SCREW YOU, NO FLIGHTS</h2>
+      ;
+  }
+
+
+
   return (
     <div>
       {data.map((flight, index) => (
-        <div>
-          <div>
-            {flight.cityFrom} to {flight.cityTo}
-          </div>
-          <div>Departure Time: {convertTime(flight.dTime)}</div>
-          <div>Arrival Time: {convertTime(flight.aTime)}</div>
-          <div>Ticket Price: {flight.price} EUR</div>
-          <div>
-            {flight.route.map((r, i) => (
-              <div>
-                {r.airline}
-                {r.flight_no}
-              </div>
-            ))}
-          </div>
-        </div>
+        <ResultCard key={index} flight={flight} convertTime={convertTime} />
       ))}
     </div>
   );
