@@ -1,4 +1,7 @@
 function FlightResults({ data, convertTime }) {
+  if (!data.length) {
+    return <h2>SCREW YOU, NO FLIGHTS</h2>;
+  }
   return (
     <div>
       {data.map((flight, index) => (
