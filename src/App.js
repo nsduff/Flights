@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 
 import FlightResults from "./Components/FlightResults";
 import Dropdown from "./Components/Dropdown";
+import Checkbox from "./Components/Checkbox";
 
 function App() {
   const [data, setData] = useState([]);
   const [destination, setDestination] = useState("VLC");
   const [origin, setOrigin] = useState("PRG");
   const [result, setResult] = useState(null);
+  const [direct, setDirect] = useState(0)
 
-  const url = `https://api.skypicker.com/flights?fly_from=${origin}&fly_to=${destination}&date_from=06/11/2021&date_to=06/11/2021&direct_flights=0&locale=en&partner=data4youcbp202106&curr=EUR&price_from=1&price_to=10000`;
+  const url = `https://api.skypicker.com/flights?fly_from=${origin}&fly_to=${destination}&date_from=06/11/2021&date_to=06/11/2021&direct_flights=${direct}&locale=en&partner=data4youcbp202106&curr=EUR&price_from=1&price_to=10000`;
 
   async function fetchData() {
     const resp = await fetch(url);
@@ -29,7 +31,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, [origin, destination]);
+  }, [origin, destination, direct]);
 
   if (!result) {
     return <Spinner></Spinner>;
@@ -44,6 +46,10 @@ function App() {
         setDestination={setDestination}
         destination={destination}
       />
+
+      <Checkbox direct={direct} setDirect={setDirect} />
+
+
       <FlightResults data={data} convertTime={convertTime} />
     </div>
   );
