@@ -1,43 +1,121 @@
-import "./App.css";
-import { Spinner } from "reactstrap";
-import { DateTime } from "luxon";
-import { useEffect, useState } from "react";
+import './App.css';
+import { Spinner } from 'reactstrap';
+import { DateTime } from 'luxon';
+import { useEffect, useState } from 'react';
 
-import FlightResults from "./Components/FlightResults";
+import FlightResults from './Components/FlightResults';
 
 function App() {
-  const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
+    const [subHeading, setSubHeading] = useState('');
 
-  const url =
-    "https://api.skypicker.com/flights?fly_from=PRG&fly_to=VLC&date_from=06/11/2021&date_to=06/11/2021&direct_flights=0&locale=en&partner=data4youcbp202106&curr=EUR&price_from=1&price_to=10000";
+    const url =
+        'https://api.skypicker.com/flights?fly_from=PRG&fly_to=VLC&date_from=06/11/2021&date_to=06/11/2021&direct_flights=0&locale=en&partner=data4youcbp202106&curr=EUR&price_from=1&price_to=10000';
 
-  async function fetchData() {
-    const resp = await fetch(url);
-    const result = await resp.json();
-    // console.log(result);
-    setData(result.data);
-  }
+    async function fetchData() {
+        const resp = await fetch(url);
+        const result = await resp.json();
+        // console.log(result);
+        setData(result.data);
+    }
 
-  function convertTime(unixTime) {
-    const time = DateTime.fromMillis(unixTime * 1000).toFormat("hh:mm");
-    return time;
-  }
+    function convertTime(unixTime) {
+        const time = DateTime.fromMillis(unixTime * 1000).toFormat('hh:mm');
+        return time;
+    }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-  if (!data.length) {
-    return <Spinner></Spinner>;
-  }
+    useEffect(() => {
+        setTimeout(() => {
+            setSubHeading("...as long as it's in Spain!");
+        }, 3000);
+    }, []);
 
-  return (
-    <div className="App">
-      {/* bollocks */}
+    if (!data.length) {
+        return <Spinner></Spinner>;
+    }
 
-      <FlightResults data={data} convertTime={convertTime} />
-    </div>
-  );
+    return (
+        <div className="App">
+            <div class="page-outline__header">
+                <div class="scene">
+                    <span class="cloud cloud--small"></span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        id="plane"
+                        class="plane"
+                        viewBox="0 0 104 47"
+                        x="0"
+                        y="0"
+                        width="104"
+                        height="47"
+                        background-color="#ffffff00"
+                    >
+                        <g id="avion">
+                            <path
+                                d="M20 36C25 38 69 43 80 40 92 38 106 33 104 21 103 13 95 13 90 9 85 5 79 2 76 1 70-1 65 0 60 2 57 3 25 14 23 13 21 12 12 2 9 3 5 4 1 5 1 6 2 7 15 34 20 36Z"
+                                fill="#0085b2"
+                            />
+                            <path
+                                d="M23 36C28 37 69 43 80 40 88 38 98 34 102 29 82 32 22 36 23 36Z"
+                                stroke="#ffffff00"
+                                stroke-width="1"
+                                fill="#14647f"
+                            />
+                            <path
+                                d="M42 39C48 40 60 40 67 40 71 32 72 26 72 26L44 29C44 29 44 35 42 39Z"
+                                stroke="#ffffff00"
+                                stroke-width="1"
+                                fill="#0c3b4d"
+                            />
+                            <path
+                                d="M7 16C7 16 9 20 10 22 13 27 16 13 16 13L7 16Z"
+                                stroke="#ffffff00"
+                                stroke-width="1"
+                                fill="#0c3b4d"
+                            />
+                            <path
+                                d="M40 29C40 29 41 34 34 42 27 51 48 46 58 39 74 28 72 25 72 25L40 29Z"
+                                stroke="#ffffff00"
+                                stroke-width="1"
+                                fill="#006e96"
+                            />
+                            <path
+                                d="M5 14C5 14 6 15 3 19 1 22 10 20 13 17 19 11 17 11 17 11L5 14Z"
+                                stroke="#ffffff00"
+                                stroke-width="1"
+                                fill="#006e96"
+                            />
+                            <path
+                                d="M90 10C88 8 83 4 80 3 78 3 68 7 68 8 70 12 80 8 90 10Z"
+                                stroke="#ffffff00"
+                                stroke-width="1"
+                                fill="#0c3b4d"
+                            />
+                            <path
+                                d="M89 9C87 7 82 3 79 2 77 2 67 6 67 7 69 11 79 7 89 9Z"
+                                stroke="#ffffff00"
+                                stroke-width="1"
+                                fill="#afe2ff"
+                            />
+                        </g>
+                    </svg>
+                    <span class="cloud cloud--medium"></span>
+                    <span class="cloud cloud--large"></span>
+                </div>
+                <h1 className="page-outline__title">Bollocks airlines</h1>
+            </div>
+            <h2 className="page-outline__subheading">
+                Going where you want...
+            </h2>
+
+            <h2 className="page-outline__subheading">{subHeading}</h2>
+            {data && <FlightResults data={data} convertTime={convertTime} />}
+        </div>
+    );
 }
 
 export default App;
