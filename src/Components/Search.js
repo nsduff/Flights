@@ -4,7 +4,7 @@ import Dropdown from './Dropdown'
 import SearchBar from './SearchBar'
 import SearchButton from './SearchButton'
 
-function Search({ setOrigin, setDestination, direct, setDirect, setStartSearch, fetchData }) {
+function Search({ setOrigin, setDestination, direct, setDirect, setStartSearch }) {
     return (
         <div>
             <Dropdown
