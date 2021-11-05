@@ -7,7 +7,7 @@ function Header() {
     useEffect(() => {
         setTimeout(() => {
             setSubHeading("...as long as it's in Spain!");
-        }, 3000);
+        }, 1500);
     }, []);
 
     return (

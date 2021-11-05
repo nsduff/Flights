@@ -1,6 +1,6 @@
-import './App.scss';
-import { DateTime } from 'luxon';
-import { useEffect, useState } from 'react';
+import "./App.scss";
+
+import { useEffect, useState } from "react";
 
 import Header from './Components/Header';
 
@@ -17,9 +17,9 @@ function App() {
 
   const [startSearch, setStartSearch] = useState(false);
 
+  const partner = "data4youcbp202106"
 
-
-  const url = `https://api.skypicker.com/flights?fly_from=${origin}&fly_to=${destination}&date_from=06/11/2021&date_to=06/11/2021&direct_flights=${direct}&locale=en&partner=data4youcbp202106&curr=EUR&price_from=1&price_to=10000`;
+  const url = `https://api.skypicker.com/flights?fly_from=${origin}&fly_to=${destination}&date_from=06/11/2021&date_to=06/11/2021&direct_flights=${direct}&locale=en&partner=${partner}&curr=EUR&price_from=1&price_to=10000`;
 
   async function fetchData(url) {
 
@@ -28,16 +28,13 @@ function App() {
     setResult(result);
     setData(result.data);
 
-    console.log(result.data);
+
 
     setStartSearch(false);
 
   }
 
-  function convertTime(unixTime) {
-    const time = DateTime.fromMillis(unixTime * 1000).toFormat("hh:mm");
-    return time;
-  }
+
 
   useEffect(() => {
     startSearch &&
@@ -77,12 +74,12 @@ function App() {
             destination={destination}
             direct={direct} setDirect={setDirect}
             setStartSearch={setStartSearch}
-            result={result} data={data} convertTime={convertTime}
+            result={result} data={data}
             startSearch={startSearch}
           />} />
 
-          <Route path="/flights/:cityFrom/:cityTo/dTime" element={<Details
-            fetchData={fetchData} />} />
+          <Route path="/flights/:cityFrom/:cityTo/:dTime/:id" element={<Details
+            fetchData={fetchData} data={data} />} />
 
         </Routes>
       </Router>

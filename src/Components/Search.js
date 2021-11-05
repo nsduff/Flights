@@ -1,8 +1,8 @@
-import React from 'react'
-import Checkbox from './Checkbox'
-import Dropdown from './Dropdown'
-import SearchBar from './SearchBar'
-import SearchButton from './SearchButton'
+import React from "react";
+import Checkbox from "./Checkbox";
+import Dropdown from "./Dropdown";
+import SearchBar from "./SearchBar";
+import SearchButton from "./SearchButton";
 
 function Search({ setOrigin, setDestination, direct, setDirect, setStartSearch }) {
     return (
@@ -16,7 +16,7 @@ function Search({ setOrigin, setDestination, direct, setDirect, setStartSearch }
 
             <SearchButton setStartSearch={setStartSearch} />
         </div>
-    )
+    );
 }
 
-export default Search
+export default Search;

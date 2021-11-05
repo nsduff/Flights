@@ -23,6 +23,14 @@ code {
     monospace;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    color: black;
+  }
+}
+
 .page-outline__title {
   margin-top: 40px;
   font-size: 3em;
@@ -122,4 +130,38 @@ code {
   animation-delay: 2.5s;
   top: 95px;
   transform: scaleX(0.8) scaleY(0.8);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.result-card {
+  background-color: steelblue;
+  height: 20rem;
+  width: 18rem;
+  height: auto;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  &:hover {
+    background: rgb(58, 141, 209);
+  }
+}
+
+.numbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.routes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
 }
