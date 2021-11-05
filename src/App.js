@@ -1,7 +1,9 @@
 import "./App.css";
+import { Spinner } from "reactstrap";
 import { DateTime } from "luxon";
-
 import { useEffect, useState } from "react";
+
+import FlightResults from "./Components/FlightResults";
 
 function App() {
   const [data, setData] = useState([]);
@@ -25,26 +27,15 @@ function App() {
     fetchData();
   }, []);
 
-
-
+  if (!data.length) {
+    return <Spinner></Spinner>;
+  }
 
   return (
     <div className="App">
-      bollocks
-      {console.log(data)}
-      {data.map((flight, index) => (
-        <div>
-          <div>{convertTime(flight.dTime)}</div>
-          <div>
-            {flight.route.map((r, i) => (
-              <div>
-                {r.airline}
-                {r.flight_no}
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+      {/* bollocks */}
+
+      <FlightResults data={data} convertTime={convertTime} />
     </div>
   );
 }
