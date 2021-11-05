@@ -25,14 +25,17 @@ function App() {
     fetchData();
   }, []);
 
+
+
+
   return (
     <div className="App">
       bollocks
       {console.log(data)}
       {data.map((flight, index) => (
         <div>
+          <div>{convertTime(flight.dTime)}</div>
           <div>
-            <div>{convertTime(flight.dTime)}</div>
             {flight.route.map((r, i) => (
               <div>
                 {r.airline}
