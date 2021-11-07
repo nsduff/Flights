@@ -1,0 +1,26 @@
+.results {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    &__can-fly {
+        width: 80%;
+        height: auto;
+        border: 1px solid white;
+        border-radius: 20px;
+    }
+    &__airport {
+        margin: 2px;
+    }
+    &__city-country {
+        margin: 2px;
+    }
+    &__button {
+        margin: 2px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+}
