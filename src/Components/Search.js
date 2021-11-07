@@ -1,19 +1,34 @@
-import React from "react";
-import Checkbox from "./Checkbox";
-import Dropdown from "./Dropdown";
-import SearchBar from "./SearchBar";
-import SearchButton from "./SearchButton";
+import React from 'react';
+import Checkbox from './Checkbox';
+import Dropdown from './Dropdown';
+import SearchBar from './SearchBar';
+import SearchButton from './SearchButton';
 
-function Search({ setOrigin, setDestination, direct, setDirect, setStartSearch }) {
+function Search({
+    origin,
+    destination,
+    setOrigin,
+    setDestination,
+    direct,
+    setDirect,
+    setStartSearch,
+    fetchData,
+}) {
     return (
         <div>
-            <Dropdown
+            <Dropdown setOrigin={setOrigin} setDestination={setDestination} />
+            <SearchBar
+                origin={origin}
                 setOrigin={setOrigin}
+                destination={destination}
                 setDestination={setDestination}
             />
-            <Checkbox direct={direct} setDirect={setDirect} setStartSearch={setStartSearch} />
-            <SearchBar />
-
+            <Checkbox
+                direct={direct}
+                setDirect={setDirect}
+                setStartSearch={setStartSearch}
+            />
+            <br />
             <SearchButton setStartSearch={setStartSearch} />
         </div>
     );
