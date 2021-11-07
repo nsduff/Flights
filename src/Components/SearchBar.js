@@ -81,23 +81,13 @@ function SearchBar({ origin, setOrigin, destination, setDestination }) {
         }
     }
 
-    // useEffect(() => {
-    //     getAirports(searchBarValue);
-    //     //  setSearchButtonPressed(false);
-    // }, [searchButtonPressed]);
-
-    // console.log(airports);
-    //console.log(worldAirports);
-    // const locationsUrl = ''
-
-    // async function fetchLocations() {
-    //     const response = await fetch(locationsUrl);
-    //     const result = await
-    // }
     return (
         <div className="searchbar">
             <br />
-            <label for="searchBar">Find other airport:</label>
+            <h5>
+                Current origin: {origin} | Current destination: {destination}
+            </h5>
+            <label for="searchBar">Find other airports:</label>
             <input
                 name="searchBar"
                 type="text"
@@ -110,8 +100,6 @@ function SearchBar({ origin, setOrigin, destination, setDestination }) {
             <br />
             <br />
             {searchResults}
-            <h3>Current origin: {origin}</h3>
-            <h3>Current destination: {destination}</h3>
         </div>
     );
 }

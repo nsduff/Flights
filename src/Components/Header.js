@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
 function Header() {
-
     const [subHeading, setSubHeading] = useState('');
 
     useEffect(() => {
         setTimeout(() => {
-            setSubHeading("...as long as it's in Spain!");
+            setSubHeading('...as long as you want to go on the 10th!');
         }, 1500);
     }, []);
 
     return (
         <>
-
             <div className="page-outline__header">
                 <div className="scene">
                     <span className="cloud cloud--small"></span>
@@ -82,12 +80,14 @@ function Header() {
                 <h1 className="page-outline__title">Bollocks airlines</h1>
             </div>
             <div className="page-outline__subheading-container">
-                <h2 className="page-outline__subheading">
+                <h6 className="page-outline__subheading">
                     Going where you want...
-                    {subHeading}</h2>
+                    {subHeading}
+                </h6>
             </div>
+            <br />
         </>
-    )
+    );
 }
 
-export default Header
+export default Header;
