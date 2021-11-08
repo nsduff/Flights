@@ -2,16 +2,17 @@ import ResultCard from "./ResultCard";
 import { Spinner } from "reactstrap";
 
 function FlightResults({
-  startSearch,
+  showResults,
   result,
   data,
   destination,
   direct,
+  loading
 }) {
-  if (startSearch && !result) {
+  if (loading) {
     return <Spinner></Spinner>;
   }
-  if (!data.length && startSearch) {
+  if (!result && showResults) {
     return (destination === "ASS" && direct === 1) ? (
       <h2>TO DEEZ BOLLOCKS?</h2>
     ) : (

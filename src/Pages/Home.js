@@ -8,8 +8,9 @@ function Home({
     setDestination,
     direct,
     setDirect,
-    setStartSearch,
-    startSearch,
+    setShowResults,
+    showResults,
+    loading,
     result,
     data,
     convertTime,
@@ -24,7 +25,7 @@ function Home({
                 setDestination={setDestination}
                 direct={direct}
                 setDirect={setDirect}
-                setStartSearch={setStartSearch}
+                setShowResults={setShowResults}
             />
 
             <FlightResults
@@ -33,7 +34,8 @@ function Home({
                 convertTime={convertTime}
                 destination={destination}
                 direct={direct}
-                startSearch={startSearch}
+                showResults={showResults}
+                loading={loading}
             />
         </>
     );

@@ -11,8 +11,7 @@ function Search({
     setDestination,
     direct,
     setDirect,
-    setStartSearch,
-    fetchData,
+    setShowResults,
 }) {
     return (
         <div>
@@ -26,10 +25,10 @@ function Search({
             <Checkbox
                 direct={direct}
                 setDirect={setDirect}
-                setStartSearch={setStartSearch}
+                setShowResults={setShowResults}
             />
             <br />
-            <SearchButton setStartSearch={setStartSearch} />
+            <SearchButton setShowResults={setShowResults} />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Checkbox({ direct, setDirect, setStartSearch }) {
+function Checkbox({ direct, setDirect, setShowResults }) {
     return (
         <>
             <label htmlFor="direct">Direct Flights Only: </label>
@@ -10,7 +10,7 @@ function Checkbox({ direct, setDirect, setStartSearch }) {
                 value={direct}
                 onChange={(e) => {
                     setDirect(direct === 0 ? 1 : 0);
-                    setStartSearch(true);
+                    setShowResults(true);
                 }}
             />
         </>

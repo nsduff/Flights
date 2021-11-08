@@ -1,10 +1,10 @@
 import React from 'react'
 
-function SearchButton({ setStartSearch }) {
+function SearchButton({ setShowResults }) {
 
 
     return (
-        <button onClick={() => setStartSearch(true)}>Search</button>
+        <button onClick={() => setShowResults(true)}>Search</button>
     )
 }
 
