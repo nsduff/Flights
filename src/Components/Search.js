@@ -12,7 +12,6 @@ function Search({
     direct,
     setDirect,
     setStartSearch,
-    fetchData,
 }) {
     return (
         <div>
