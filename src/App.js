@@ -24,17 +24,17 @@ function App() {
     const url = `https://api.skypicker.com/flights?fly_from=${origin}&fly_to=${destination}&date_from=10/11/2021&date_to=10/11/2021&direct_flights=${direct}&locale=en&partner=${partner}&curr=EUR&price_from=1&price_to=10000`;
 
     async function fetchData(url) {
-        setLoading(true);
         const resp = await fetch(url);
         const result = await resp.json();
         setResult(result);
         setData(result.data);
+
         setLoading(false);
     }
 
     useEffect(() => {
-        showResults && fetchData(url);
-    }, [direct, showResults]);
+        loading && fetchData(url);
+    }, [direct, loading]);
 
     return (
         // <div className="App">
@@ -70,9 +70,10 @@ function App() {
                                 direct={direct}
                                 setDirect={setDirect}
                                 showResults={showResults}
+                                setShowResults={setShowResults}
                                 result={result}
                                 data={data}
-                                setShowResults={setShowResults}
+                                setLoading={setLoading}
                                 loading={loading}
                             />
                         }
@@ -80,7 +81,7 @@ function App() {
 
                     <Route
                         path="/flights/:cityFrom/:cityTo/:dTime/:id"
-                        element={<Details fetchData={fetchData} data={data} showResults={showResults} />}
+                        element={<Details />}
                     />
                 </Routes>
             </Router>

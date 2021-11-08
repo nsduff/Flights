@@ -8,13 +8,14 @@ function Home({
     setDestination,
     direct,
     setDirect,
-    setShowResults,
+    setLoading,
     showResults,
     loading,
     result,
     data,
     convertTime,
     destination,
+    setShowResults
 }) {
     return (
         <>
@@ -25,6 +26,8 @@ function Home({
                 setDestination={setDestination}
                 direct={direct}
                 setDirect={setDirect}
+                setLoading={setLoading}
+                showResults={showResults}
                 setShowResults={setShowResults}
             />
 
@@ -36,6 +39,7 @@ function Home({
                 direct={direct}
                 showResults={showResults}
                 loading={loading}
+
             />
         </>
     );

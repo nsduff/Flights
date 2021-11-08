@@ -1,10 +1,13 @@
 import React from 'react'
 
-function SearchButton({ setShowResults }) {
+function SearchButton({ setLoading, setShowResults }) {
 
 
     return (
-        <button onClick={() => setShowResults(true)}>Search</button>
+        <button onClick={() => {
+            setLoading(true);
+            setShowResults(true)
+        }}>Search</button>
     )
 }
 

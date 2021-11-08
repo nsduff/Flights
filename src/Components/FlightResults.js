@@ -3,7 +3,6 @@ import { Spinner } from "reactstrap";
 
 function FlightResults({
   showResults,
-  result,
   data,
   destination,
   direct,
@@ -12,7 +11,7 @@ function FlightResults({
   if (loading) {
     return <Spinner></Spinner>;
   }
-  if (!result && showResults) {
+  if (!data.length && showResults) {
     return (destination === "ASS" && direct === 1) ? (
       <h2>TO DEEZ BOLLOCKS?</h2>
     ) : (
